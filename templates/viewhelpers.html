@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View Helpers</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='external.css') }}">
+</head>
+<body>
+<h1 style="text-align: center; color: whitesmoke; background: black; padding: 10px;">All Helper Entries</h1>
+<div style="width: 80%; margin: auto; margin-top: 30px;">
+    {% if helpers %}
+        <table border="1" cellpadding="10" style="width:100%; text-align: left;">
+            <tr>
+                <th>ID</th>
+                <th>Seeker ID</th>
+                <th>Helper Name</th>
+                <th>Solution</th>
+                <th>Action</th>
+            </tr>
+            {% for helper in helpers %}
+            <tr>
+                <td>{{ helper.id }}</td>
+                <td>{{ helper.seeker_id }}</td>
+                <td>{{ helper.helper_name }}</td>
+                <td>{{ helper.solution }}</td>
+                <td>
+                    <form method="post" action="/delete_helper/{{ helper.id }}">
+                        <button type="submit" onclick="return confirm('Delete this helper entry?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p style="text-align:center;">No helper entries found.</p>
+    {% endif %}
+    <div style="margin-top:20px; text-align:center;">
+        <button onclick="window.location.href='/adminop'" class="stylish-btn">Back</button>
+    </div>
+</div>
+</body>
+</html>

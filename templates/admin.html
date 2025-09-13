@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='external.css') }}">
+</head>
+<body>
+    <h1 style="text-align: center;margin-top: 100px;background-color: black;color: white;">Admin</h1>
+    <div>
+        <form method="post" action="/admin">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+                 <tr>
+                <td></td>
+                <td>{% if error %}
+        <p style="color: red; text-align:center;">{{ error }}</p>
+    {% endif %}
+    </td>
+            </tr>
+                <tr>
+                    <td><button onclick="window.location.href='/admin'" class="stylish-btn">Refresh</button></td>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+</body>
+</html>

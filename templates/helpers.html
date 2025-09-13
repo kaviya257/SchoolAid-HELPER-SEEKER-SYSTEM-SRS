@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Seekers</title>
+    <link rel="stylesheet" href="external.css">
+     <style>
+    table {
+        border-collapse: collapse;
+        width: 70%;
+        margin: 20px auto;
+    }
+    th, td {
+        border: 1px solid #333;
+        padding: 10px;
+        text-align: center;
+    }
+    th {
+        background-color: #3e7cb1;
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <h1 style="text-align: center;">Helpers</h1>
+    <div style="overflow-y: auto; max-height: 380px; margin: 20px; width: 75%; margin-left: auto; margin-right: auto;">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Query</th>
+            <th>Status</th>
+        </tr>
+        {% for st in stocks %}
+        <tr>
+            <td>{{st["symbol"] }}</td>
+            <td>{{st["company"]}}</td>
+            <td>{{st["price(per share)"]}}</td>
+            <td>{{st["available_shares"]}}</td>
+            <td>{{st["sector"]}}</td>
+            <td>{{st["rating"]}}</td>
+        </tr>
+        {% endfor %}
+    
+</body>
+</html>

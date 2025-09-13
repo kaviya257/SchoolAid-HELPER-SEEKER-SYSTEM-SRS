@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Request System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f4f9;
+    }
+    h1 { margin: 20px; }
+    .scroll-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background: white;
+      width: 80%;
+      margin: auto;
+    }
+    .card {
+      flex: 0 0 auto;
+      width: 220px;
+      padding: 20px;
+      border-radius: 10px;
+      background: #e3f2fd;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      background: #2196f3;
+      color: white;
+      cursor: pointer;
+    }
+    .card button:disabled {
+      background: gray;
+      cursor: not-allowed;
+    }
+    .card button:hover:not(:disabled) {
+      background: #1976d2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Seekers Needing Help</h1>
+  <div class="scroll-container">
+    {% for seeker in seekers %}
+      <div class="card">
+        <h3>{{ seeker.name }}</h3>
+        <p><b>Need:</b> {{ seeker.help_needed }}</p>
+        <form class="help-form" action="/help/{{ seeker.id }}" method="post">
+          <input type="text" name="helperName" placeholder="Your name" required><br>
+          <textarea name="solution" placeholder="Text / URL / PPT link" required></textarea><br>
+          <button type="submit">Help</button>
+        </form>
+        <div class="help-list">
+          {% if seeker.id in helps %}
+            <b>Solutions:</b>
+            <ul>
+              {% for h in helps[seeker.id] %}
+                <li><b>{{ h.helper_name }}</b>: {{ h.solution }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <script>
+    // Intercept all forms with class 'help-form'
+    document.querySelectorAll('.help-form').forEach(form => {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault(); // stop normal submit
+        const button = this.querySelector('button[type="submit"]');
+        const formData = new FormData(this);
+
+        // Send using fetch()
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          alert('✅ Help Sent!');
+          button.disabled = true; // disable after success
+        } else {
+          alert('❌ Something went wrong. Try again.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

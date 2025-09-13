@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='external.css') }}">
+</head>
+<body>
+    <h1 style="text-align: center;">Functionalities</h1>
+    <h1 style="background: white;color: white;text-align: center;margin-top: 60px;">
+        <a href="/admin">Admin    |</a>
+        <a href="/helper">Helper   |</a>
+        <a href="/seeker">Seeker   |</a>
+        <a href="/profile">Profile  |</a>
+        <a href="/feedback">feedback    |</a>
+        <a href="/">back</a>
+        </h1>
+  <marquee behavior="scroll" direction="left" scrollamount="15">
+  <img src="{{ url_for('static', path='school.jpg') }}" width="300" height="300" alt="School 1">
+  <img src="{{ url_for('static', path='teacher.jpg') }}" width="300" height="300" alt="School 2">
+  <img src="{{ url_for('static', path='pg.jpg') }}" width="300" height="300" alt="School 3">
+  <img src="{{ url_for('static', path='garden.jpg') }}" width="300" height="300" alt="School 4">
+  <img src="{{ url_for('static', path='bus.jpg') }}" width="300" height="300" alt="School 5">
+  <img src="{{ url_for('static', path='library.png') }}" width="300" height="300">
+  <img src="{{ url_for('static', path='school.jpg') }}" width="300" height="300" alt="School 1">
+  <img src="{{ url_for('static', path='teacher.jpg') }}" width="300" height="300" alt="School 2">
+  <img src="{{ url_for('static', path='pg.jpg') }}" width="300" height="300" alt="School 3">
+  <img src="{{ url_for('static', path='garden.jpg') }}" width="300" height="300" alt="School 4">
+  <img src="{{ url_for('static', path='bus.jpg') }}" width="300" height="300" alt="School 5">
+  <img src="{{ url_for('static', path='library.png') }}" width="300" height="300">
+</marquee>
+    
+   
+    
+</body>
+</html>

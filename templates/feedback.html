@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #33c6f0;       /* 🔵 Blue background */
+            padding: 30px;
+            margin: 0;
+        }
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background: white;        /* Keep form card white for contrast */
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #aaa;
+        }
+        h2 { 
+            text-align: center; 
+            color: #000;              /* Black heading for visibility */
+        }
+        input, textarea, select {
+            width: 100%; padding: 10px; margin: 10px 0;
+            border-radius: 5px; border: 1px solid #ccc;
+        }
+        button {
+            width: 100%; padding: 10px;
+            background: #28a745; color: white;
+            border: none; border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .message { text-align: center; color: green; }
+        .back-btn {
+            width: 100%; padding: 10px;
+            background: #007bff; color: white;
+            border: none; border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .back-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback Form</h2>
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+        <form method="post">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+            
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Rating:</label>
+            <select name="rating" required>
+                <option value="">Select rating</option>
+                <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                <option value="4">⭐⭐⭐⭐ Good</option>
+                <option value="3">⭐⭐⭐ Average</option>
+                <option value="2">⭐⭐ Poor</option>
+                <option value="1">⭐ Very Poor</option>
+            </select>
+
+            <label>Description:</label>
+            <textarea name="description" rows="4" placeholder="Your feedback here..." required></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <button onclick="window.location.href='/welcome'" class="back-btn">Back</button>
+    </div>
+</body>
+</html>

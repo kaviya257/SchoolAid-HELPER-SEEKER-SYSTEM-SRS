@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Seeker Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='external.css') }}">
+</head>
+<body>
+    <h1 style="text-align: center; color: whitesmoke; background: black; padding: 10px;">
+        Seeker Request Form
+    </h1>
+
+    <div style="width: 50%; margin: auto; margin-top: 50px;">
+        <form method="post" action="/seeker">
+            <label for="name">Your Name:</label><br>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+
+            <label for="help">What help do you need?</label><br>
+            <textarea id="help" name="help" placeholder="Describe the help needed" rows="4" cols="50" required></textarea><br><br>
+
+            <button type="submit">Submit Request</button>
+              <td><button onclick="window.location.href='/welcome'" class="stylish-btn">Back</button></td>
+        </form>
+    </div>
+
+    {% if message %}
+        <p style="text-align: center; color: green; font-weight: bold;">
+            {{ message }}
+        </p>
+    {% endif %}
+</body>
+</html>

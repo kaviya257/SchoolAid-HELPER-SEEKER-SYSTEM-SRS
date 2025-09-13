@@ -1,0 +1,73 @@
+.class1{
+    background-color: black;
+    color: whitesmoke;
+    font-size: large;
+    padding: 10px;
+    display: block;
+    
+    
+}
+body{
+    height:100vh;
+    margin:0;
+    background:linear-gradient(135deg,rgb(70, 197, 232),rgb(64, 192, 225))
+    
+}
+div{
+    background:linear-gradient(135deg,whitesmoke,whitesmoke);
+    padding: 50px;
+    width:250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-top: 50px;
+    margin-left: 390px;
+}
+button{
+    background-color: rgb(87, 193, 226);
+    border-radius: 30px;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+   
+}
+
+button:hover{
+    background:rgb(11, 166, 213);
+}
+
+.button1{
+	background-color:tan;
+    border-radius: 30px;
+    height: 40px;
+    cursor: pointer;
+    padding: 5px;
+    width: 250px;
+    margin-top: 100px;
+    margin-left: 450px;
+    
+}
+.button1:hover{
+    background: rgb(11, 166, 213);
+}
+.button2{
+	background-color:tan;
+    height: 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    padding: 5px;
+    width: 250px;
+    margin-top: 50px;
+    margin-left: 450px;
+    
+}
+.button2:hover{
+    background: rgb(11, 166, 213);
+}
+.button3{
+	background-color: rgb(32, 63, 218);
+   margin:20px auto;
+   cursor:pointer;
+}
+.button3:hover{
+	background: rgb(87, 193, 226);
+}

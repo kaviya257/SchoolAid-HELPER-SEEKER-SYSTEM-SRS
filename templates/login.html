@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='external.css') }}">
+</head>
+<body>
+     <h1 style="text-align:center;color: whitesmoke;">School Aid Management</h1><br>
+    <marquee behavior="scroll" direction="left" scrollamount="15" class="class1" >SchoolAid Management System connects seekers with helpers, enabling students to get academic support and share resources. It fosters collaborative learning by allowing knowledge exchange in a structured, easy-to-use platform.</marquee>
+    <br><br>
+    <div class="container">
+    <form method="post" action="/">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="username" placeholder="Enter Name" required></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" placeholder="Enter Password" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{% if error %}
+        <p style="color: red; text-align:center;">{{ error }}</p>
+    {% endif %}
+    </td>
+            </tr>
+            <tr>
+                <td><button onclick="window.location.href='/'" class="stylish-btn">Refresh</button></td>
+                <td><button type="submit">Login</button></td>
+            </tr>
+        </table>
+    </form>
+    </div>
+</body>
+</html>

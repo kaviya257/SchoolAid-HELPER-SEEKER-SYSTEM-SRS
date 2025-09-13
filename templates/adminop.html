@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Operations</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='external.css') }}">
+</head>
+<body>
+    
+        <h1 style="color:whitesmoke;background-color: black;text-align: center; margin-top: 50px;">Welcome Admin</h1>
+        <form method="get" action="/viewseekers">
+            <button type="submit" class="button1">View Seekers</button>
+        </form>
+        <form method="get" action="/viewhelpers">
+            <button type="submit" class="button2">View Helpers</button>
+        </form>
+        <form method="get" action="/viewfeedbacks">
+            <button type="submit" class="button2">View Feedbacks</button>
+        </form>
+        <form method="get" action="/welcome">
+            <button type="submit" class="button2">Back</button>
+        </form>
+   
+
+    
+</body>
+</html>
