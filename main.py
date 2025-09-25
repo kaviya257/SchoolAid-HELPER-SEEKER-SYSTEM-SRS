@@ -9,7 +9,7 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# ---------------- DB CONNECTION ----------------
+
 def connect_database():
     return psycopg2.connect(
         database="SchoolAid",
@@ -19,7 +19,7 @@ def connect_database():
         port="5432"
     )
 
-# ---------------- LOGIN ----------------
+
 @app.get("/")
 def display_login(request: Request, error: str = ""):
     return templates.TemplateResponse("login.html", {"request": request, "error": error})
@@ -46,12 +46,12 @@ def login_user(request: Request, username: str = Form(...), password: str = Form
         conn.close()
         return templates.TemplateResponse("welcome.html", {"request": request})
 
-# ---------------- WELCOME ----------------
+
 @app.get("/welcome")
 def display_welcome(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
 
-# ---------------- ADMIN ----------------
+
 @app.get("/admin")
 def display_admin(request: Request):
     return templates.TemplateResponse("admin.html", {"request": request})
@@ -76,7 +76,6 @@ def login_admin(request: Request, name: str = Form(...), password: str = Form(..
         conn.close()
         return templates.TemplateResponse("admin.html", {"request": request, "error": "You don’t have admin Registration!"})
 
-# ---------------- ADMIN OPERATIONS ----------------
 @app.get("/adminop")
 def display_adminoperation(request: Request):
     conn = connect_database()
@@ -87,7 +86,7 @@ def display_adminoperation(request: Request):
     conn.close()
     return templates.TemplateResponse("adminop.html", {"request": request, "seekers": seekers})
 
-# ---------------- VIEW SEEKERS ----------------
+
 @app.get("/viewseekers")
 def view_seekers(request: Request):
     conn = connect_database()
@@ -109,7 +108,7 @@ def delete_seeker(seeker_id: int):
     conn.close()
     return RedirectResponse(url="/viewseekers", status_code=303)
 
-# ---------------- VIEW HELPERS ----------------
+
 @app.get("/viewhelpers")
 def view_helpers(request: Request):
     conn = connect_database()
@@ -130,7 +129,7 @@ def delete_helper(help_id: int):
     conn.close()
     return RedirectResponse(url="/viewhelpers", status_code=303)
 
-# ---------------- VIEW FEEDBACKS ----------------
+
 @app.get("/viewfeedbacks")
 def view_feedbacks(request: Request):
     conn = connect_database()
@@ -151,7 +150,7 @@ def delete_feedback(feedback_id: int):
     conn.close()
     return RedirectResponse(url="/viewfeedbacks", status_code=303)
 
-# ---------------- FEEDBACK FORM ----------------
+
 @app.get("/feedback")
 def feedback_form(request: Request):
     return templates.TemplateResponse("feedback.html", {"request": request, "message": ""})
@@ -166,7 +165,7 @@ def submit_feedback(request: Request, name: str = Form(...), email: str = Form(.
     conn.close()
     return templates.TemplateResponse("feedback.html", {"request": request, "message": "Thank you for your feedback!"})
 
-# ---------------- SEEKER ----------------
+
 @app.get("/seeker")
 def display_seeker(request: Request, message: str = ""):
     return templates.TemplateResponse("seeker.html", {"request": request, "message": message})
@@ -186,7 +185,7 @@ def submit_seeker(request: Request, name: str = Form(...), help: str = Form(...)
     conn.close()
     return templates.TemplateResponse("seeker.html", {"request": request, "message": "Your request has been submitted successfully!"})
 
-# ---------------- HELPER ----------------
+
 @app.get("/helper")
 def display_helper(request: Request):
     conn = connect_database()
@@ -212,7 +211,7 @@ def help_seeker(seeker_id: int, request: Request, helperName: str = Form(...), s
     conn.close()
     return display_helper(request)
 
-# ---------------- PROFILE ----------------
+
 @app.get("/profile")
 def profile_login_page(request: Request, error: str = ""):
     return templates.TemplateResponse("profile.html", {"request": request, "error": error})
@@ -233,7 +232,7 @@ def profile_login(request: Request, name: str = Form(...), password: str = Form(
     conn.close()
     return templates.TemplateResponse("profile.html", {"request": request, "name": seeker["name"], "helps": helps, "error": None})
 
-# ---------------- SATISFIED BUTTON ----------------
+
 @app.post("/satisfied/{help_id}")
 def mark_satisfied(help_id: int):
     conn = connect_database()
